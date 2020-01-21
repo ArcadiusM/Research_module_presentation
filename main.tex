@@ -1,28 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Beamer Presentation
-% LaTeX Template
-% Version 1.0 (10/11/12)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND THEMES
-%----------------------------------------------------------------------------------------
-
 \documentclass{beamer}
 \usepackage{dsfont}
-
+\usepackage{fontawesome}
 \mode<presentation> {
-
-% The Beamer class comes with a number of default slide themes
-% which change the colors and layouts of slides. Below this is a list
-% of all the themes, uncomment each in turn to see what they look like.
 
 %\usetheme{default}
 %\usetheme{AnnArbor}
@@ -52,10 +31,6 @@
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
 
-% As well as themes, the Beamer class has a number of color themes
-% for any slide theme. Uncomment each of these in turn to see how it
-% changes the colors of your current slide theme.
-
 %\usecolortheme{albatross}
 %\usecolortheme{beaver}
 %\usecolortheme{beetle}
@@ -79,24 +54,32 @@
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-\usepackage[backend=biber]{biblatex}
-\usepackage[ruled,vlined]{algorithm2e}
 
+\usepackage[backend=biber, bibencoding=utf8]{biblatex}
+\usepackage[ruled, vlined]{algorithm2e}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\setbeamercovered{transparent}
+\newcommand{\semitransp}[2][20]{\color{fg!#1}#2}
+\newcommand{\nontransp}[2][100]{\color{fg!#1}#2}
 \bibliography{references.bib}
+
+
+
+\newcommand{\irow}[1]{% inline row vector
+  \begin{smallmatrix}(#1)\end{smallmatrix}%
+}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
 \title{Random Forest for Classification Problems} % The short title appears at the bottom of every slide, the full title is only on the title page
-
-\author{Raphael, Arkadiusz and  Burak} % Your name
-\institute[Uni Bonn] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
-{
-Uni Bonn \\ % Your institution for the title page
-\medskip
-}
-\date{\today} % Date, can be changed to a custom date
+\author[Redmer, Modzelewski, Balaban]{Raphael Redmer, Arkadiusz Modzelewski,\newline Burak Balaban}
+\institute[Uni Bonn]{University of Bonn \\ Research Module in Econometrics and Statistics}
+\date{January 20, 2020} % Date, can be changed to a custom date
 
 \begin{document}
 
@@ -113,7 +96,7 @@ Uni Bonn \\ % Your institution for the title page
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
 
-\include{slides/01_intro}
+%\include{slides/01_intro}
 
 \include{slides/02_decision_tree}
 
@@ -129,7 +112,7 @@ Uni Bonn \\ % Your institution for the title page
 
 \include{slides/08_real_data}
 
-\include{slides/09_conclusion}
+\include{slides/09_contact_data}
 
 \include{slides/10_references}
 

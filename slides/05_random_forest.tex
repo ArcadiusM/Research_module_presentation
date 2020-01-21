@@ -1,9 +1,10 @@
 %------------------------------------------------
-\section{Random Forest}
+\subsection{Random Forest}
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{Random Forest}
+\framesubtitle{Definition}
 %\begin{table}
 %\begin{tabular}{l l l}
 %\toprule
@@ -17,19 +18,21 @@
 %\caption{Table caption}
 %\end{table}
 
-An ensemble of randomly trained decision trees, so in other words 
-random forest was defined by L. Breiman:
+
 \vspace{1ex}
 
-\begin{theorem}
+
+\begin{definition}[by L.Breiman \cite{breiman2001random}]
 	A random forest is a classifier consisting of a collection of tree-structured classifiers ${\hat{T}_{\theta_{b}}(\textbf{x})}, b = 1,...,B$ where the $\theta_{b}$ are independent identically
-	distributed random vectors and each tree casts a unit vote for the most popular class at input $\textbf{x}$ .
-\end{theorem}
+	distributed random vectors and each tree casts a unit vote for the most popular class at input $\textbf{x}$.
+\end{definition}
 \vspace{4ex}
 
 Random Forest is an extension and improvement over bagging:
+\vspace{1ex}
 \begin{enumerate}
 \item Like in bagging, multiple decision trees are built
+\vspace{1ex}
 \item Improvement: an injection of randomness is made
 \end{enumerate}
 
@@ -38,14 +41,19 @@ Random Forest is an extension and improvement over bagging:
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Random Forest: randomness in the model}
+\frametitle{Random Forest}
+\framesubtitle{Randomness in the model}
 
-Two key concepts that makes decision forest "random" are:
+Two key concepts that makes decision forest "random" are \cite{friedman2001elements}:
+\vspace{1ex}
 \begin{enumerate}
 	\item Random sampling of training data points when building trees
-	\item Random subsets of features considered when splitting nodes. Recommended number of variables:
+\vspace{1ex}
+	\item Random subsets of variables considered when splitting nodes. Recommended number of variables:
+\vspace{1ex}
 	\begin{enumerate}[a]
 	    \item For classification:  $\lfloor{\sqrt{n}} \rfloor$
+\vspace{1ex}
 	    \item For regression: $\lfloor \frac{n}{3} \rfloor$
 	\end{enumerate}
 \end{enumerate}
@@ -54,24 +62,27 @@ Two key concepts that makes decision forest "random" are:
 \end{frame}
 
 \begin{frame}
-\frametitle{Random Forest: algorithm}
+\frametitle{Random Forest}
+\framesubtitle{Algorithm}
 
 \begin{algorithm}[H]
 \SetAlgoLined
 \begin{enumerate}
+	\bigbreak
 	\item For $b$ = 1 to $B$:
 	\begin{enumerate}[a]
-	    \item Draw a bootstrap sample $\theta_{b}$ of size N from the training data.
-	    \item Grow the Random Forest tree ${{T}_{\theta_{b}}}$ to the bootstrapped data, by recursively repeating the following steps for each terminal node of the tree, until the minimum node size $n_{min}$ is reached:
+	    \item Draw a bootstrap sample $D_{b}$ of size N from the training data.
+	    \item Grow the Random Forest tree ${{T}_{D_{b},\theta_{b}}}$ to the bootstrapped data, by recursively repeating the following steps for each terminal node of the tree, until the minimum node size $n_{min}$ is reached:
 	    \begin{enumerate}[i]
-	       \item Select $m$ variables at random from the $n$ variables
+	       \item Select $m$ variables denoted by $\theta_{b}$ at random from the $n$ variables
 	       \item Pick the best variable/split-point among the $m$
 	       \item  Split the node into two daughter nodes
 	    \end{enumerate}
 	\end{enumerate}
-	\item  Output the ensemble of trees $\{{T}_{\theta_{b}}\}_{1}^{B}$
+	\item  Output the ensemble of trees $\{{T}_{D_{b},\theta_{b}}\}_{b=1}^{B}$
+	\smallbreak
 \end{enumerate}
- \caption{Random Forest for Regression or Classification}
+ \caption{Random Forest for Regression or Classification \cite{friedman2001elements}}
 \end{algorithm}
 
 \end{frame}
